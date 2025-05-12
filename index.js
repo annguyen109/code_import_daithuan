@@ -75,4 +75,4 @@ function runInterval(fns, t = 100) {
 
 document.addEventListener("DOMContentLoaded", renderCustomHtml);
 window.addEventListener("popstate", renderCustomHtml);
-runInterval([setSearchPlaceholder, customHtmlMenu, customHtmlFooter]);
+runInterval([setSearchPlaceholder, customHtmlMenu, customHtmlFooter], 300);
