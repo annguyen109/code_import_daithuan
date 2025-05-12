@@ -47,7 +47,7 @@ function customHtmlMenu() {
 }
 
 function customHtmlFooter() {
-  const paymentWrapper = document.querySelector("#tm-footer-layout-2__MT0XSUDv_tm-footer-layout-2 .payment-wrapper");
+  const paymentWrapper = document.querySelector('[id*="tm-footer-layout-2"] .payment-wrapper');
 
   console.log(paymentWrapper, 'footer')
 
