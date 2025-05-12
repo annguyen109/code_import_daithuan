@@ -47,18 +47,35 @@ function customHtmlMenu() {
 }
 
 function customHtmlFooter() {
-  const paymentWrapper = document.querySelector('[id*="tm-footer-layout-2"] .payment-wrapper');
-  const smHeads = document.querySelectorAll('[id*="tm-footer-layout-2"] .contact .sm-head');
+  let updated = false;
 
+  const paymentWrapper = document.querySelector('[id*="tm-footer-layout-2"] .payment-wrapper');
   if (paymentWrapper) {
     paymentWrapper.style.display = "none";
+    updated = true;
   }
 
+  const smHeads = document.querySelectorAll('[id*="tm-footer-layout-2"] .contact .sm-head');
   if (smHeads.length > 0) {
     smHeads[0].innerHTML = '<span class="fa fa-phone"></span>Số điện thoại';
+    updated = true;
   }
 
-  return paymentWrapper && smHeads.length > 0;
+  const iconWrapper = document.querySelectorAll('[id*="tm-footer-layout-2"] .icon-wrapper')
+
+  if(iconWrapper.length > 0) {
+    iconWrapper.forEach(wrapper => {
+        wrapper.insertAdjacentHTML('beforeend', `
+          <a href="https://www.tiktok.com/@thuysandaithuan" target="_blank" rel="noopener noreferrer">
+            <img class="icon" src="https://d3a0f2zusjbf7r.cloudfront.net/30a93659-a27f-411d-a07c-a88d6de76749.png" alt="tiktok">
+          </a>
+        `);
+      });
+    updated = true;
+  }
+  
+
+  return updated;
 }
 
 function setSearchPlaceholder() {
