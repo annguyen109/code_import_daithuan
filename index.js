@@ -40,7 +40,6 @@ function customHtmlMenu() {
   const logo = document.querySelector(".tm-header-menu-language-1 .gs-shop-logo-link");
   const header = document.querySelector(".tm-header-menu-language-1 .navbar.navbar-expand-lg");
 
-  console.log(header, 'header')
   if (logo) logo.style.display = "none";
   if (header) header.style.padding = "1.5rem";
 
@@ -49,19 +48,22 @@ function customHtmlMenu() {
 
 function customHtmlFooter() {
   const paymentWrapper = document.querySelector('[id*="tm-footer-layout-2"] .payment-wrapper');
-
-  console.log(paymentWrapper, 'footer')
+  const smHeads = document.querySelectorAll('[id*="tm-footer-layout-2"] .contact .sm-head');
 
   if (paymentWrapper) {
     paymentWrapper.style.display = "none";
   }
 
-  return paymentWrapper;
+  if (smHeads.length > 0) {
+    smHeads[0].innerHTML = '<span class="fa fa-phone"></span>Số điện thoại';
+  }
+
+  return paymentWrapper && smHeads.length > 0;
 }
 
 function setSearchPlaceholder() {
   const input = document.querySelector(".gs-search-header-modal__search-input");
-  console.log(input, 'input')
+  
   if (!input) return false;
 
   input.placeholder = "Nhập thông tin cần tìm";
