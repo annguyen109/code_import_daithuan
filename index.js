@@ -40,6 +40,7 @@ function customHtmlMenu() {
   const logo = document.querySelector(".tm-header-menu-language-1 .gs-shop-logo-link");
   const header = document.querySelector(".tm-header-menu-language-1 .navbar.navbar-expand-lg");
 
+  console.log(header, 'header')
   if (logo) logo.style.display = "none";
   if (header) header.style.padding = "1.5rem";
 
@@ -60,6 +61,7 @@ function customHtmlFooter() {
 
 function setSearchPlaceholder() {
   const input = document.querySelector(".gs-search-header-modal__search-input");
+  console.log(input, 'input')
   if (!input) return false;
 
   input.placeholder = "Nhập thông tin cần tìm";
@@ -75,4 +77,4 @@ function runInterval(fns, t = 100) {
 
 document.addEventListener("DOMContentLoaded", renderCustomHtml);
 window.addEventListener("popstate", renderCustomHtml);
-runInterval([setSearchPlaceholder, customHtmlMenu, customHtmlFooter], 300);
+runInterval([setSearchPlaceholder, customHtmlMenu, customHtmlFooter]);
