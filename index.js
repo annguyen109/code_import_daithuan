@@ -40,30 +40,36 @@ function customHtmlMenu() {
   let updated = false;
 
   const logo = document.querySelector(".tm-header-menu-language-1 .gs-shop-logo-link");
+  alert('Kiếm đc logo')
   if (logo) {
     logo.style.display = "none";
     updated = true;
   }
    
   const header = document.querySelector(".tm-header-menu-language-1 .navbar.navbar-expand-lg");
+  alert('Kiếm đc header')
   if (header) {
     header.style.padding = "1.5rem";
     updated = true;
   }
 
   const paymentWrapper = document.querySelector('[id*="tm-footer-layout-2"] .payment-wrapper');
+  alert('Kiếm đc paymentWrapper')
   if (paymentWrapper) {
     paymentWrapper.style.display = "none";
     updated = true;
   }
 
   const smHeads = document.querySelectorAll('[id*="tm-footer-layout-2"] .contact .sm-head');
+  alert('Kiếm đc smHeads')
+  
   if (smHeads.length > 0) {
     smHeads[0].innerHTML = '<span class="fa fa-phone"></span>Số điện thoại';
     updated = true;
   }
 
-  const iconWrapper = document.querySelectorAll('[id*="tm-footer-layout-2"] .icon-wrapper')
+  const iconWrapper = document.querySelectorAll('[id*="tm-footer-layout-2"] .icon-wrapper');
+  alert('Kiếm đc iconWrapper')
   if(iconWrapper.length > 0) {
     iconWrapper.forEach(wrapper => {
         wrapper.insertAdjacentHTML('beforeend', `
