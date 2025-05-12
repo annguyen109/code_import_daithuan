@@ -1,10 +1,77 @@
-function renderCustomHtml(){const e=window.location.pathname;"/shopping-cart"===e&&hideShoppingCartService(),"/checkout"===e&&queryFormCheckout()}
-function hideShoppingCartService(){document.querySelectorAll(".container-summary .debt-amount").forEach(e=>e.style.display="none");const e=document.querySelectorAll(".product-or-service-shopping-cart-v2 .mytab-custom li")[1].style.display = 'none';}
-function queryFormCheckout(){["#form-new-shipping-address > div:nth-child(2) > label","#form-new-shipping-address > div:nth-child(3) > div:nth-child(1) > label","#form-new-shipping-address > div:nth-child(4) > div:nth-child(1) > label","#form-new-shipping-address > div.shipping-address-inside.group-selection-wrapper > div:nth-child(1) > label","#form-new-shipping-address > div.shipping-address-inside.group-selection-wrapper > div:nth-child(2) > label","#form-new-shipping-address > div.shipping-address-inside.group-selection-wrapper > div:nth-child(3) > label"].forEach(appendAsterisk)}
-function appendAsterisk(e){const t=document.querySelector(e);if(!t)return;const n=document.createElement("span");n.textContent=" *",n.style.color="red",t.appendChild(n)}
-function removeLogoMenu(){const e=document.querySelector(".tm-header-menu-language-1 .gs-shop-logo-link"),t=document.querySelector(".tm-header-menu-language-1 .navbar.navbar-expand-lg"),f=document.querySelector('[id*="tm-footer-layout-2"]'),p=f?.querySelector(".payment-wrapper");return e&&(e.style.display="none"),t&&(t.style.padding="1.5rem"),p&&(p.style.display="none"),e&&t&&p}
-function setSearchPlaceholder(){const e=document.querySelector(".gs-search-header-modal__search-input");return!!e&&(e.placeholder="Nhập thông tin cần tìm",!0)}
-function runInterval(e,t=100){const n=setInterval(()=>{e=e.filter(r=>!r()),0===e.length&&clearInterval(n)},t)}
-document.addEventListener("DOMContentLoaded",renderCustomHtml),
-window.addEventListener("popstate",renderCustomHtml),
-runInterval([setSearchPlaceholder,removeLogoMenu]);
+function renderCustomHtml() {
+  const e = window.location.pathname;
+  if (e === "/shopping-cart") hideShoppingCartService();
+  if (e === "/checkout") queryFormCheckout();
+}
+
+function hideShoppingCartService() {
+  document.querySelectorAll(".container-summary .debt-amount").forEach(el => {
+    el.style.display = "none";
+  });
+
+  const tab = document.querySelectorAll(".product-or-service-shopping-cart-v2 .mytab-custom li")[1];
+  if (tab) tab.style.display = "none";
+}
+
+function queryFormCheckout() {
+  const selectors = [
+    "#form-new-shipping-address > div:nth-child(2) > label",
+    "#form-new-shipping-address > div:nth-child(3) > div:nth-child(1) > label",
+    "#form-new-shipping-address > div:nth-child(4) > div:nth-child(1) > label",
+    "#form-new-shipping-address > div.shipping-address-inside.group-selection-wrapper > div:nth-child(1) > label",
+    "#form-new-shipping-address > div.shipping-address-inside.group-selection-wrapper > div:nth-child(2) > label",
+    "#form-new-shipping-address > div.shipping-address-inside.group-selection-wrapper > div:nth-child(3) > label"
+  ];
+
+  selectors.forEach(appendAsterisk);
+}
+
+function appendAsterisk(selector) {
+  const label = document.querySelector(selector);
+  if (!label) return;
+
+  const asterisk = document.createElement("span");
+  asterisk.textContent = " *";
+  asterisk.style.color = "red";
+  label.appendChild(asterisk);
+}
+
+function customHtmlMenu() {
+  const logo = document.querySelector(".tm-header-menu-language-1 .gs-shop-logo-link");
+  const header = document.querySelector(".tm-header-menu-language-1 .navbar.navbar-expand-lg");
+
+  if (logo) logo.style.display = "none";
+  if (header) header.style.padding = "1.5rem";
+
+  return logo && header;
+}
+
+function customHtmlFooter() {
+  const footer = document.querySelector('[id*="tm-footer-layout-2"]');
+  const paymentWrapper = footer?.querySelector(".payment-wrapper");
+
+  if (paymentWrapper) {
+    paymentWrapper.style.display = "none";
+  }
+
+  return !!paymentWrapper;
+}
+
+function setSearchPlaceholder() {
+  const input = document.querySelector(".gs-search-header-modal__search-input");
+  if (!input) return false;
+
+  input.placeholder = "Nhập thông tin cần tìm";
+  return true;
+}
+
+function runInterval(fns, t = 100) {
+  const interval = setInterval(() => {
+    fns = fns.filter(fn => !fn());
+    if (fns.length === 0) clearInterval(interval);
+  }, t);
+}
+
+document.addEventListener("DOMContentLoaded", renderCustomHtml);
+window.addEventListener("popstate", renderCustomHtml);
+runInterval([setSearchPlaceholder, customHtmlMenu, customHtmlFooter]);
