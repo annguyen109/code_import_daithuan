@@ -48,13 +48,10 @@ function customHtmlMenu() {
 
 function customHtmlFooter() {
   const footer = document.querySelector('[id*="tm-footer-layout-2"]');
-  if (footer) {
-    const paymentWrapper = footer?.querySelector(".payment-wrapper");
-  
-    if (paymentWrapper) {
-      paymentWrapper.style.display = "none";
-    }
+  const paymentWrapper = footer?.querySelector(".payment-wrapper");
 
+  if (paymentWrapper) {
+    paymentWrapper.style.display = "none";
     return true;
   }
 
