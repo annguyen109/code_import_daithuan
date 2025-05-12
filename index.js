@@ -48,13 +48,17 @@ function customHtmlMenu() {
 
 function customHtmlFooter() {
   const footer = document.querySelector('[id*="tm-footer-layout-2"]');
-  const paymentWrapper = footer?.querySelector(".payment-wrapper");
+  if (footer) {
+    const paymentWrapper = footer?.querySelector(".payment-wrapper");
+  
+    if (paymentWrapper) {
+      paymentWrapper.style.display = "none";
+    }
 
-  if (paymentWrapper) {
-    paymentWrapper.style.display = "none";
+    return true;
   }
 
-  return !!paymentWrapper;
+  return false;
 }
 
 function setSearchPlaceholder() {
