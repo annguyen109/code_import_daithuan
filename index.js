@@ -46,7 +46,6 @@ function customHtmlMenu() {
   }
    
   const header = document.querySelector(".tm-header-menu-language-1 .navbar.navbar-expand-lg");
-
   if (header) {
     header.style.padding = "1.5rem";
     updated = true;
@@ -65,7 +64,6 @@ function customHtmlMenu() {
   }
 
   const iconWrapper = document.querySelectorAll('[id*="tm-footer-layout-2"] .icon-wrapper')
-
   if(iconWrapper.length > 0) {
     iconWrapper.forEach(wrapper => {
         wrapper.insertAdjacentHTML('beforeend', `
@@ -76,6 +74,8 @@ function customHtmlMenu() {
       });
     updated = true;
   }
+
+  return updated;
 }
 
 function customHtmlFooter() {
